@@ -9,7 +9,7 @@ function App() {
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("chicken");
+  const [query, setQuery] = useState("egg");
 
   useEffect(() => {
     getRecipie();
@@ -36,13 +36,14 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="heading">Food Recipes</h1>
       <form className="search-form" onSubmit={submitQuery}>
-        <input className="search-bar" type="text" value={search} onChange={searchUpdate}></input>
+        <input className="search-bar" type="text" value={search} onChange={searchUpdate} placeholder="Search recipes" autofocus></input>
         <button className="search-button" type="submit">
           Search
         </button>
       </form>
-      <div className="recipes">
+      <section className="cards">
         {recipes.map(recipe => (
           <Recipe
             key={recipe.recipe.label}
@@ -54,12 +55,9 @@ function App() {
           />
 
         ))}
-      </div>
-
-
-
-
+      </section>
     </div>
+
   );
 }
 
